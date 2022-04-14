@@ -1,0 +1,3 @@
+class Paddle {
+  
+}//End Paddle
