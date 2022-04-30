@@ -1,46 +1,122 @@
-int NumberOfStars = 5; 
-Ball[] stars = new Ball[NumberOfStars]; 
+import processing.sound.*;
+SoundFile ding;
 
-int appWidth, appHeight; //final variables
-int smallerDisplayDimension; //final variable
+Ball ball;
+
+Paddle left;
+Paddle right;
+
+int leftScore = 0;
+int rightScore = 0;
 
 void setup() {
-  size (500, 600); //fullScreen, displayWidth, displayHeight
-
-  println (width, height, displayWidth, displayHeight);
-  appWidth = width; // switch with displayWidth
-  appHeight = height; // switch with displayHeight
-  smallerDisplayDimension = ( appWidth <= appHeight ) ? appWidth : appHeight;
-  
-  for (int i=0; i<stars.length; i++) {
-    //Randomly choose parameters
-    float diameterRandom = random ( smallerDisplayDimension*1/20 , smallerDisplayDimension*1/10); 
-    float xRandom = random (0 + diameterRandom*1/2, appWidth-diameterRandom); //No stars in net
-    float yRandom = random (0 + diameterRandom*1/2, appWidth-diameterRandom); //Entire appHeight ok
-    stars[i] = new Ball (xRandom, yRandom, diameterRandom);
-    int j = i;
-    
-    while (j>=0){
-    if( xRandom > stars[j].ballX-stars[j].ballDiameter*1/2 && xRandom < stars[j].ballX-stars[j].ballDiameter*1/2 ) {
-     xRandom = random (0 + diameterRandom*1/2, appWidth-diameterRandom);
-    }
-    j--;
-    }
-     
-    stars[i] = new Ball (xRandom, yRandom, diameterRandom);
-  }//End Population
-  
+ size(600, 400); 
+ ding = new SoundFile(this,"ding.mp3");
+ ball = new Ball();
+ left = new Paddle(true);
+ right = new Paddle(false);
+ 
+ System.out.println("For left paddle use: 'w' & 's' || For right paddle use: 'Up' & 'Down' arrow keys");
 }//End setup
 
-void draw() {
-  for ( int i=0; i<stars.length; i++ ) {
-    stars[i].drawStar();
-  }//End FOR
+void draw(){
+ background(0); 
+ // 
+  pushMatrix();
+  translate(width*0.8, height*0.5);
+  rotate(frameCount / -100.0);
+  star(0, 0, 15, 35, 5); 
+  popMatrix();
   
-}//End draw
+   pushMatrix();
+  translate(width*0.8, height*0.1);
+  rotate(frameCount / -100.0);
+  star(0, 0, 15, 35, 5); 
+  popMatrix();
+  
+   pushMatrix();
+  translate(width*0.8, height*0.9);
+  rotate(frameCount / -100.0);
+  star(0, 0, 15, 35, 5); 
+  popMatrix();
+  //Right side stars
+  //
+  pushMatrix();
+  translate(width*0.2, height*0.5);
+  rotate(frameCount / -100.0);
+  star(0, 0, 15, 35, 5); 
+  popMatrix();
+  
+   pushMatrix();
+  translate(width*0.2, height*0.9);
+  rotate(frameCount / -100.0);
+  star(0, 0, 15, 35, 5); 
+  popMatrix();
+ 
+   pushMatrix();
+  translate(width*0.2, height*0.1);
+  rotate(frameCount / -100.0);
+  star(0, 0, 15, 35, 5); 
+  popMatrix();
+  //Left side stars
+ 
+  pushMatrix();
+  translate(width*0.5, height*0.5);
+  rotate(frameCount / -100.0);
+  star(0, 0, 15, 35, 5); 
+  popMatrix();
+  
+   pushMatrix();
+  translate(width*0.5, height*0.1);
+  rotate(frameCount / -100.0);
+  star(0, 0, 15, 35, 5); 
+  popMatrix();
+  
+   pushMatrix();
+  translate(width*0.5, height*0.9);
+  rotate(frameCount / -100.0);
+  star(0, 0, 15, 35, 5); 
+  popMatrix();
+  //
+  
+ ball.checkPaddleRight(right);
+ ball.checkPaddleLeft(left);
+
+ left.display();
+ right.display();
+ left.update();
+ right.update();
+ 
+ ball.update();
+ ball.sides();
+ ball.display();
+
+ fill(255);
+  textSize(32);
+  text(leftScore, 32, 40);
+  text(rightScore, width-64, 40);
+  scoreColourModifier();
+  GameOver(); 
+
+}//End Draw
 
 void keyPressed() {
-}//End keyPressed
-
-void mousePressed() {
+if (key == CODED && key == 'W' || key == 'w'){
+  left.move(-8);
 }
+  if (key == CODED && key == 'S' || key == 's'){
+  left.move(8);
+  }
+  if (key == CODED && key == 'D' || key == 'd'){
+    left.move(0);
+  }
+   if (key == CODED && keyCode == UP){
+   right.move(-8);
+  }
+  if (key == CODED && keyCode == DOWN){ 
+  right.move(8);
+}
+   if (key == CODED && keyCode == LEFT){
+    right.move(0); 
+   }
+}//End KeyPressed

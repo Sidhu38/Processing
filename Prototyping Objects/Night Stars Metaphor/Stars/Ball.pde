@@ -8,7 +8,6 @@ class Ball {
 void checkPaddleLeft(Paddle p){
   if(y - r < p.y + p.h/2 && y + r > p.y - p.h/2 && x - r < p.x + p.w/2){
      if (x > p.x) {
-       
         float diff = y - (p.y - p.h/2);
         float rad = radians(45);
         float angle = map(diff, 0, p.h, -rad, rad);
@@ -22,7 +21,6 @@ void checkPaddleLeft(Paddle p){
 void checkPaddleRight(Paddle p){
   if( y - r < p.y + p.h/2 && y + r > p.y - p.h/2 && x + r > p.x - p.w/2){
    if (x < p.x) {
-     
         float diff = y - (p.y - p.h/2);
         float angle = map(diff, 0, p.h, radians(225), radians(135));
         xSpeed = 5 * cos(angle);
@@ -51,7 +49,7 @@ void checkPaddleRight(Paddle p){
 
 void sides(){
   if ( y < 0 || y > height) {
-    ySpeed *= -1;
+    ySpeed *= -1.5;
   } 
   if(x - r > width) {
     ding.play();
@@ -66,8 +64,10 @@ void sides(){
 }//End sides
 
  void display() { 
-  fill(255);
-  ellipse( x, y, r*2, r*2);
+  
+   fill(#F50000);
+   ellipse( x, y, r*2, r*2);
+   
 }//End Display
 
 }//End Class

@@ -49,7 +49,7 @@ void checkPaddleRight(Paddle p){
 
 void sides(){
   if ( y < 0 || y > height) {
-    ySpeed *= -1;
+    ySpeed *= -1.5;
   } 
   if(x - r > width) {
     ding.play();
@@ -66,10 +66,7 @@ void sides(){
  void display() { 
   fill(255);
   ellipse( x, y, r*2, r*2);
-  if (leftScore >= 5 || rightScore >= 5){
-    xSpeed = 5;
-    ySpeed = 5;
-  }
+  
 }//End Display
 
 }//End Class
