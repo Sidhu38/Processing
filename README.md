@@ -1,3 +1,3 @@
 # Processing
 
-Pong2 is the one i am working on
+Currently working on Abstract pong.
