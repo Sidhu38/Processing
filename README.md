@@ -1,3 +1,3 @@
 # Processing
 
-Currently working on Stars metaphor.
+Currently working on Abstract pong.
