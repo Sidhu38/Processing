@@ -50,6 +50,7 @@ void checkPaddleRight(Paddle p){
 void sides(){
   if ( y < 0 || y > height) {
     ySpeed *= -1.5;
+    boing.play();
   } 
   if(x - r > width) {
     ding.play();

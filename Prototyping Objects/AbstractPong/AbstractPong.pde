@@ -1,6 +1,6 @@
 import processing.sound.*;
 SoundFile ding;
-
+SoundFile boing;
 Ball ball;
 
 Paddle left;
@@ -12,6 +12,7 @@ int rightScore = 0;
 void setup() {
  size(600, 400); 
  ding = new SoundFile(this,"ding.mp3");
+ boing = new SoundFile(this,"boing.mp3");
  ball = new Ball();
  left = new Paddle(true);
  right = new Paddle(false);
@@ -19,15 +20,17 @@ void setup() {
 }//End setup
 
 void draw(){
- if (instructionButton.clicked ()){
-  background(#1AE800);
- intructions
- 
+  background(#030000);
+  instructionsButton();
+  exitGameButton();
+  startGameButton();
   
-  
-  
- background(0); 
- 
+if (instructionsButton == true){
+ instructions(); 
+}//Instructions
+
+ if(startGameButton == true){
+   
  ball.checkPaddleRight(right);
  ball.checkPaddleLeft(left);
 
@@ -40,17 +43,27 @@ void draw(){
  ball.sides();
  ball.display();
 
- fill(255);
+  fill(255);
   textSize(32);
   text(leftScore, 32, 40);
   text(rightScore, width-64, 40);
   scoreColourModifier();
   GameOver(); 
-
+ }//End Game
 }//End Draw
 
-void keyPressed() {
-
+void mousePressed(){
+ if (startGameButton){
+   startGameButton = true;
+ }
+ if (exitGameButton){
+  exit(); 
+ }
+ if(instructionsButton){
+ instructionsButton = true;
+ }
+}//End mousePressed
+void keyPressed(){
 if (key == CODED && key == 'W' || key == 'w'){
   left.move(-8);
 }

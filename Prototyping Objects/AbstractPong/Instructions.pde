@@ -1,9 +1,10 @@
-
-
+String instruction;
 void instructions(){
-  text("FOR SINGLE PLAYER PRESS, FOR TWO PLAYER PRESS 2");
-  if ( keyPressed
-  text("SINGLE PLAYER USE 'W' FOR UP || 'D' FOR DOWN || 'S' TO STOP PADDLE");
+  background(0);
+  fill(255);
+  textSize(32);
+  text(instruction, 300, 200);
+ 
  
 } 
 
