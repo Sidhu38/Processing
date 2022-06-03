@@ -1,3 +1,3 @@
 # Processing
 
-Currently working on Abstract pong.
+Currently working on Abstract pong, and Face assignment.
