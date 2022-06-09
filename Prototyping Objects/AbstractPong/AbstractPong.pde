@@ -8,6 +8,7 @@ Paddle right;
 
 int leftScore = 0;
 int rightScore = 0;
+boolean gameOn = false;
 
 void setup() {
   size(displayWidth, displayHeight);
@@ -22,9 +23,8 @@ void setup() {
 void draw() {
 
   background(0);
- 
   
-  
+  if (gameOn = true ) {
   ball.checkPaddleRight(right);
   ball.checkPaddleLeft(left);
 
@@ -43,11 +43,15 @@ void draw() {
   text(rightScore, width-64, 40);
   scoreColourModifier();
   GameOver();
+  }//End GameOn
 }//End Draw
 
 void mousePressed() {
 
-    startGameButton = true;
+  if (startGameButton == true){
+    gameOn = true;
+    
+  }
   
     exitGameButton = true;
     
