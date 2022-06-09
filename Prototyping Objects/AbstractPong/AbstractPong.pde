@@ -11,7 +11,7 @@ int rightScore = 0;
 boolean gameOn = false;
 
 void setup() {
-  size(displayWidth, displayHeight);
+  size(600, 400);
   ding = new SoundFile(this, "ding.mp3");
   boing = new SoundFile(this, "boing.mp3");
   ball = new Ball();
@@ -22,9 +22,8 @@ void setup() {
 
 void draw() {
 
-  background(0);
+  background(black);
   
-  if (gameOn = true ) {
   ball.checkPaddleRight(right);
   ball.checkPaddleLeft(left);
 
@@ -43,15 +42,10 @@ void draw() {
   text(rightScore, width-64, 40);
   scoreColourModifier();
   GameOver();
-  }//End GameOn
+
 }//End Draw
 
 void mousePressed() {
-
-  if (startGameButton == true){
-    gameOn = true;
-    
-  }
   
     exitGameButton = true;
     
