@@ -1,3 +1,3 @@
 # Processing
 
-Currently working on Abstract pong, and Face assignment(emoji);
+Currently working on working on Menu for final class pong;
