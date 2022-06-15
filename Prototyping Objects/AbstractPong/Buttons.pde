@@ -1,24 +1,20 @@
-boolean startGameButton = false;
-boolean  instructionsButton = false;
-boolean  exitGameButton = false;
-color white = #FFFFFF;
-class Button {
 
   void instructionButton() {
-    fill(white);
+    fill(ins);
     textSize(20);
-    rect(10, 20, 300, 200);
+    rect(300, 400, 200, 80);
   }
 
   void exitGameButton() {
-    fill(white);
+    fill(exit);
     textSize(20);
-    rect(10, 20, 250, 200);
+    rect(300, 200, 200, 80);
+   
   }
 
   void startGameButton() {
-    fill(white);
+    fill(str);
     textSize(20);
-    rect(10, 20, 350, 200);
+  rect( 300, 300 , 200, 80);
   }
 }//End Button

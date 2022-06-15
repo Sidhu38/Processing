@@ -9,47 +9,37 @@ Paddle right;
 int leftScore = 0;
 int rightScore = 0;
 boolean gameOn = false;
+color black = #000000;
+int str = 0;
+int ins = 0;
+int exit = 0;
 
 void setup() {
-  size(600, 400);
+  size(800, 600);//change to displaywidth and height later;
   ding = new SoundFile(this, "ding.mp3");
   boing = new SoundFile(this, "boing.mp3");
   ball = new Ball();
   left = new Paddle(true);
   right = new Paddle(false);
+
   
 }//End setup
 
 void draw() {
+startGameButton();
+text("CLASSIC PONG", 300, 40);
+ 
 
-  background(black);
-  
-  ball.checkPaddleRight(right);
-  ball.checkPaddleLeft(left);
-
-  left.display();
-  right.display();
-  left.update();
-  right.update();
-
-  ball.update();
-  ball.sides();
-  ball.display();
-
-  fill(255);
-  textSize(32);
-  text(leftScore, 32, 40);
-  text(rightScore, width-64, 40);
-  scoreColourModifier();
-  GameOver();
-
+if ( str == 1){
+ gameOn();
+}//End str
 }//End Draw
 
-void mousePressed() {
-  
-    exitGameButton = true;
-    
-    instructionsButton = true;
+void mouseClicked() {
+ if (str == 0){
+  str = 1;
+ }
+ 
   
 }//End mousePressed
 void keyPressed() {

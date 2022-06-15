@@ -1,8 +1,8 @@
 class Ball {
   float x = width/2;
   float y = height/2;
-  float xSpeed = 2;
-  float ySpeed = 3;
+  float xSpeed = 5;
+  float ySpeed = 5;
   float r = 12;
 
   void checkPaddleLeft(Paddle p) {
